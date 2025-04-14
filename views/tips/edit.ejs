@@ -1,0 +1,59 @@
+<% /* Set the page title. */ %>
+<% title = 'Edit Tip' %>
+
+<!-- Main container. -->
+<div style="max-width:720px; margin:0 auto;">
+  
+  <!-- Back Button: Allows users to navigate back to the Tips list. -->
+  <div class="d-flex align-items-center mb-3">
+    <a href="/tips" class="btn btn-secondary">← Back to Tips</a>
+  </div>
+  
+  <!-- Edit Tip Form. -->
+  <form action="/tips/<%= tip._id %>" method="POST" class="bg-white p-4 rounded shadow-sm">
+    
+    <!-- Title Input Field. -->
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="<%= tip.title %>" required>
+    </div>
+
+    <!-- Category Select Field. -->
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <select name="category" class="form-select" required>
+        <option value="">Choose one...</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat %>" <%= tip.category === cat ? 'selected' : '' %>><%= cat %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <!-- Author Select Field. -->
+    <div class="mb-3">
+      <label class="form-label">Author (Family Member)</label>
+      <select name="author" class="form-select" required>
+        <option value="">Choose...</option>
+        <% members.forEach(member => { %>
+          <option value="<%= member._id %>" <%= tip.author && tip.author.toString() === member._id.toString() ? 'selected' : '' %>>
+            <%= member.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <!-- Content Editor Field. -->
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+      <!-- The div used to display a rich text editor. -->
+      <div id="editor" style="height: 200px;" class="form-control">
+        <%- tip.content %>
+      </div>
+      <!-- Hidden input field to store the content from the editor when the form is submitted. -->
+      <input type="hidden" name="content" id="hiddenContent">
+    </div>
+
+    <!-- Submit Button. -->
+    <button type="submit" class="btn btn-warning">Update Tip</button>
+  </form>
+</div>

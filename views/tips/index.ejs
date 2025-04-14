@@ -1,0 +1,74 @@
+<% /* Set the page title. */ %>
+<% title = 'All Tips' %>
+
+<!-- Main container. -->
+<div style="max-width:720px; margin:0 auto;">
+  
+  <!-- Header Section. -->
+  <section class="tips-header text-center mb-5">
+    <h2 class="fw-semibold text-dark">Family Wisdom</h2>
+    <p class="text-muted">Collected knowledge from every branch of our tree 🌳</p>
+  </section>
+
+  <!-- Filter Dropdown: Allows users to filter tips by category. -->
+  <div class="mb-4 text-center">
+    <form method="GET" action="/tips">
+      <select name="category" class="form-select" onchange="this.form.submit()">
+        <!-- Show all tips. -->
+        <option value="">All Tips</option>
+        <% categories.forEach(category => { %>
+          <!-- For each category, mark option as selected if it matches current filter. -->
+          <option value="<%= category %>" <%= selectedCategory === category ? 'selected' : '' %>><%= category %></option>
+        <% }) %>
+      </select>
+    </form>
+  </div>
+
+  <!-- Tips List Section. -->
+  <section class="tips-list">
+    <% if (tips.length === 0) { %>
+      <!-- Message when no tips. -->
+      <p class="text-muted">No tips available for the selected category. Try again later or choose a different category.</p>
+    <% } else { %>
+      <% tips.forEach(tip => { %>
+        <!-- Card for each tip. -->
+        <div class="card tip-card mb-4" id="tip-<%= tip._id %>">
+          <div class="card-body">
+            <h5 class="card-title">
+              <!-- Display tip title. -->
+              <%= tip.title %>
+              <% 
+                // Generate badge class based on the tip category.  Convert it to lowercase and replace spaces with dashes.
+                const badgeClass = `badge-${tip.category.toLowerCase().replace(/\s+/g, '-')}`;
+              %>
+              <!-- Category badge. -->
+              <span class="badge rounded-pill <%= badgeClass %> ms-2"><%= tip.category %></span>
+            </h5>
+            
+            <!-- Subtitle showing the author of the tip. If no author is found, defaults to 'Anonymous.' -->
+            <h6 class="card-subtitle mb-2 text-muted">
+              by <%= tip.author ? tip.author.name : 'Anonymous' %>
+            </h6>
+            <!-- Tip content.  Note - rendered unescaped to preserve HTML formatting. -->
+            <p class="card-text"><%- tip.content %></p>
+  
+            <!-- Action buttons for Edit, Delete, and Print. -->
+            <div class="d-flex gap-2">
+              <!-- Edit button. -->
+              <a href="/tips/<%= tip._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+              <!-- Delete button with confirmation dialog. -->
+              <form action="/tips/<%= tip._id %>/delete" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-sm btn-outline-danger"
+                  onclick="return confirm('Are you sure you want to delete this tip?');">
+                  Delete
+                </button>
+              </form>
+              <!-- Print button. Uses JavaScript function to print the tip. -->
+              <button onclick="printTip('<%= tip._id %>')" class="btn btn-sm btn-outline-primary">Print</button>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </section>
+</div>

@@ -1,0 +1,249 @@
+/* ======================================================
+   GLOBAL STYLES
+========================================================= */
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* Navigation links */
+.custom-nav-link {
+  color: #6c757d; 
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.custom-nav-link:hover {
+  text-decoration: underline;
+  color: #495057; 
+}
+
+.active-link {
+  color: #495057; 
+  font-weight: 600;
+  font-size: .96rem;
+  text-decoration: underline;
+}
+
+/* ======================================================
+   HERO SECTION (Homepage)
+========================================================= */
+.homepage-hero {
+  background: linear-gradient(135deg, #4b8673, #8fb79a);
+  padding: 4rem 1.5rem;
+  margin-bottom: 3rem;
+  border-radius: 0.75rem;
+}
+
+.homepage-hero h1 {
+  font-size: 2.7rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.homepage-hero .tagline {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ======================================================
+   HOMEPAGE INTRO
+========================================================= */
+.homepage-intro .description {
+  font-size: 1rem;
+  max-width: 720px;
+  margin: 0 auto 2rem auto;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ======================================================
+   HOMEPAGE BUTTONS
+========================================================= */
+.homepage-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.homepage-buttons .btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  border-radius: 50rem;
+  transition: all 0.2s ease;
+}
+
+.homepage-buttons .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ======================================================
+   TIPS HEADER (for Tips pages)
+========================================================= */
+.tips-header {
+  background: linear-gradient(to right, #6da892, #b9d5c4);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2.5rem;
+  max-width: 720px;
+}
+
+.tips-header p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* ======================================================
+   TIP CARD STYLES
+========================================================= */
+.tip-card {
+  background-color: #fdfdfd;
+  border: 1px solid #dfe6e3;
+  border-left: 4px solid #84b49c;
+  border-radius: 0.75rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.tip-card:hover {
+  background-color: #f8fdf9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.tip-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.tip-card .card-text {
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ======================================================
+   QUILL EDITOR STYLES
+========================================================= */
+#editor {
+  padding-left: 2px;
+}
+
+/* ======================================================
+   BADGE STYLES (Tip Categories)
+========================================================= */
+.badge-recipe {
+  background-color: #ffe599;
+  color: #5c4400;
+}
+
+.badge-repair {
+  background-color: #f28b82;
+  color: #6b1111;
+}
+
+.badge-gardening {
+  background-color: #a5d6a7;
+  color: #2e7d32;
+}
+
+.badge-life-tip {
+  background-color: #90caf9;
+  color: #0d47a1;
+}
+
+.badge-travel {
+  background-color: #ffcc80;
+  color: #6d4c41;
+}
+
+.badge-finance {
+  background-color: #c5e1a5;
+  color: #33691e;
+}
+
+.badge-other {
+  background-color: #d1c4e9;
+  color: #4a148c;
+}
+
+/* ======================================================
+   FORM HEADER STYLES
+========================================================= */
+.form-header {
+  background: linear-gradient(to right, #e0f4ea, #f6fff9);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  max-width: 720px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ======================================================
+   TIP FORM STYLES
+========================================================= */
+.tip-form {
+  border: 1px solid #dfe6e3;
+  background-color: #fff;
+}
+
+.tip-form .form-label {
+  font-weight: 500;
+}
+
+.tip-form .form-control,
+.tip-form select {
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* ======================================================
+   CENTERED HEADER & CONTAINER
+========================================================= */
+.centered-header {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.family-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ======================================================
+   FAMILY MEMBER CARD STYLES
+========================================================= */
+.family-node {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-left: 4px solid #84b49c;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.node-header strong {
+  font-size: 1.05rem;
+}
+
+/* ======================================================
+   EDIT PAGE HEADER STYLES
+========================================================= */
+.edit-header {
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5); 
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}

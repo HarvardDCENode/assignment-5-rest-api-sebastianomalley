@@ -1,0 +1,36 @@
+<% /* Set the page title dynamically based on member's name. */ %>
+<% title = `${member.name}'s Tips` %>
+
+<!-- Header Section. -->
+<section class="tips-header text-center mb-4" style="max-width: 720px; margin: 0 auto;">
+  <h2 class="fw-semibold text-dark"><%= member.name %>'s Tips</h2>
+  <p class="text-muted">Wisdom shared with the family.</p>
+</section>
+
+<!-- Main container. -->
+<div style="max-width: 720px; margin: 0 auto;">
+  <% if (tips.length === 0) { %>
+    <!-- If no tips are available, display a friendly message :). -->
+    <p class="text-muted">No tips from <%= member.name %> yet.</p>
+  <% } else { %>
+    <!-- Loop through each tip and display in card format. -->
+    <% tips.forEach(tip => { %>
+      <div class="tip-card card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">
+            <!-- Display tip title. -->
+            <%= tip.title %>
+            <% 
+              // Generate badge class based on the tip category.  Convert it to lowercase and replace spaces with dashes.
+              const badgeClass = `badge-${tip.category.toLowerCase().replace(/\s+/g, '-')}`;
+            %>
+            <!-- Display category badge next to title. -->
+            <span class="badge rounded-pill <%= badgeClass %> ms-2"><%= tip.category %></span>
+          </h5>
+          <!-- Render the tip content. -->
+          <p class="card-text"><%- tip.content %></p>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>

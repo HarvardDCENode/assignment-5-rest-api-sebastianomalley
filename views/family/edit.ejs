@@ -1,0 +1,41 @@
+<% /* Set the page title. */ %>
+<% title = 'Edit Family Member' %>
+
+<!-- Main container.  Max-width for centered layout.  Okay to do this here, or better/best practice in CSS? -->
+<div style="max-width:720px; margin:0 auto;">
+  
+  <!-- Back Button: Allows users to navigate back to the Family list. -->
+  <div class="d-flex align-items-center mb-3">
+    <a href="/family" class="btn btn-secondary">← Back to Family</a>
+  </div>
+
+  <!-- Header Section: Displays the name of the member being edited. -->
+  <div class="edit-header" style="max-width:720px; margin:0 auto;">
+    <h2>Edit Member: <%= member.name %></h2>
+  </div>
+
+  <!-- Edit Form: Submits changes to update the family member. -->
+  <form method="POST" action="/family/<%= member._id %>/edit" class="bg-white p-4 rounded shadow-sm mx-auto" style="max-width:720px;">
+    
+    <!-- Name Input Field. -->
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" name="name" value="<%= member.name %>" class="form-control" required autocomplete="off">
+    </div>
+
+    <!-- Birth Year Input Field. -->
+    <div class="mb-3">
+      <label class="form-label">Birth Year</label>
+      <input type="number" name="birthYear" value="<%= member.birthYear || '' %>" class="form-control">
+    </div>
+
+    <!-- Notes Textarea Field. -->
+    <div class="mb-3">
+      <label class="form-label">Notes</label>
+      <textarea name="notes" class="form-control"><%= member.notes || '' %></textarea>
+    </div>
+
+    <!-- Submit Button. -->
+    <button type="submit" class="btn btn-warning">Update Member</button>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+# Node modules (don't upload to GitHub)
+node_modules/
+
+# Environment variables (keep secrets secret)
+.env
+
+# Logs
+npm-debug.log*
+
+# OS metadata (macOS)
+.DS_Store

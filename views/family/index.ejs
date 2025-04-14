@@ -1,0 +1,58 @@
+<% /* Set the page title. */ %>
+<% title = 'Family Members' %>
+
+<!-- Header Section. -->
+<div class="centered-header">
+  <section class="tips-header text-center mb-4">
+    <h2 class="fw-semibold text-dark">Family Members</h2>
+    <p class="text-muted">Family Tree Coming Soon!! 🌳</p>
+  </section>
+</div>
+
+<!-- Add New Family Member Button. -->
+<div class="mb-4" style="max-width: 720px; margin: 0 auto;">
+  <a href="/family/add" class="btn btn-outline-success">➕ Add Family Member</a>
+</div>
+
+<!-- Check if there are no family members. -->
+<% if (members.length === 0) { %>
+  <p class="text-muted">No family members added yet.</p>
+<% } %>
+
+<!-- Display the list of family members. -->
+<div class="family-wrapper">
+  <% members.forEach(member => { %>
+    <div class="family-node mb-4">
+      <div class="node-header d-flex justify-content-between align-items-center">
+        <div>
+          <strong>
+            <!-- Link to view tips for the specific family member. -->
+            <a href="/family/<%= member._id %>/tips" class="link-dark text-decoration-none">
+              <%= member.name %>
+            </a>
+          </strong>
+          <!-- Display birth year if available. -->
+          <% if (member.birthYear) { %>
+            <small class="text-muted">(<%= member.birthYear %>)</small>
+          <% } %>
+        </div>
+        <div>
+          <!-- Edit Button. -->
+          <a href="/family/<%= member._id %>/edit" class="btn btn-sm btn-outline-secondary me-2">Edit</a>
+          <!-- Delete Form. -->
+          <form action="/family/<%= member._id %>/delete" method="POST" class="d-inline">
+            <button class="btn btn-sm btn-outline-danger"
+              onclick="return confirm('Are you sure you want to delete this member?');">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<!-- Footer Note. -->
+<p class="text-muted small text-center">
+  Note: Deleting and adding members is currently open to anyone using the app. Login features coming soon.
+</p>

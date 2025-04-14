@@ -1,0 +1,45 @@
+<% /* Set the page title. */ %>
+<% title = 'Add Family Member' %>
+
+<!-- Header Section. -->
+<div class="centered-header" style="max-width:720px; margin:0 auto;">
+  <section class="tips-header text-center mb-5">
+    <h2 class="fw-semibold text-dark">Family Members</h2>
+    <p class="text-muted">Collected knowledge from our family.</p>
+  </section>
+</div>
+
+<!-- Main container. -->
+<div style="max-width:720px; margin:0 auto;">
+
+  <!-- Back Button: Allows users to return to the Family page. -->
+  <div class="mb-3">
+    <a href="/family" class="btn btn-secondary">← Back to Family</a>
+  </div>
+
+  <!-- Form to add new family member. -->
+  <form method="POST" action="/family/add" class="bg-white p-4 rounded shadow-sm mx-auto" style="max-width:720px;">
+    <!-- Name Input Field. -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" name="name" class="form-control" autocomplete="off" required>
+    </div>
+
+    <!-- Birth Year Input Field. -->
+    <div class="mb-3">
+      <label for="birthYear" class="form-label">Birth Year</label>
+      <input id="birthYear" type="number" name="birthYear" class="form-control">
+    </div>
+
+    <!-- Notes Textarea Field. -->
+    <div class="mb-3">
+      <label for="notes" class="form-label">Notes</label>
+      <textarea id="notes" name="notes" class="form-control" rows="3"></textarea>
+    </div>
+
+    <!-- Submit Button: Adds the new family member. -->
+    <div class="text-start mt-3">
+      <button type="submit" class="btn btn-success">Add Member</button>
+    </div>
+  </form>
+</div>

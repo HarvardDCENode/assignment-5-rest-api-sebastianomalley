@@ -1,0 +1,53 @@
+<% /* Page title. */ %>
+<% title = 'Add Tip' %>
+
+<!-- Header Section. -->
+<div class="centered-header" style="max-width:720px; margin:0 auto;">
+  <section class="tips-header text-center mb-5">
+    <h2 class="fw-semibold text-dark">Add a Tip</h2>
+    <p class="text-muted">Pass along something helpful — a recipe, trick, or bit of family wisdom.</p>
+  </section>
+</div>
+
+<!-- Tip Form. -->
+<form action="/tips" method="POST" class="tip-form bg-white p-4 rounded shadow-sm mx-auto" style="max-width:720px;">
+  
+  <!-- Title Input Field. -->
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input id="title" type="text" name="title" class="form-control" required>
+  </div>
+
+  <!-- Category Select Field. -->
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <select id="category" name="category" class="form-select" required>
+      <option value="">Choose one...</option>
+      <% categories.forEach(cat => { %>
+        <option value="<%= cat %>"><%= cat %></option>
+      <% }) %>
+    </select>
+  </div>  
+
+  <!-- Author Select Field. -->
+  <div class="mb-3">
+    <label for="author" class="form-label">Author (Family Member)</label>
+    <select id="author" name="author" class="form-select" required>
+      <option value="">Choose...</option>
+      <% members.forEach(member => { %>
+        <option value="<%= member._id %>"><%= member.name %> (<%= member.birthYear || 'Unknown' %>)</option>
+      <% }) %>
+    </select>
+  </div>
+
+  <!-- This div used as rich text editor area. Users can format!! -->
+  <div id="editor" style="height:200px;" class="form-control"></div>
+  
+  <!-- Hidden input field to store the content from the editor when the form is submitted. -->
+  <input type="hidden" name="content" id="hiddenContent">
+  
+  <!-- Submit Button. -->
+  <div class="text-end mt-3">
+    <button type="submit" class="btn btn-success px-4">Save Tip</button>
+  </div>
+</form>
